@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Single-dimensional array for product names
+        String[] productNames = {
+                "Cozy Nights Monarch mattress",
+                "Restonic Barbados mattress",
+                "Sealy Phuket mattress"
+        };
+
+        // Two-dimensional array for sales: 3 products by 3 months
+        int[][] salesData = new int[3][3];
+
+        // Prompt user for monthly sales inputs
+        for (int i = 0; i < productNames.length; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print("Enter number of sales for month " + (j + 1) + " for " + productNames[i] + ": ");
+                salesData[i][j] = scanner.nextInt();
+            }
+            System.out.println();
+        }
+
+        // Instantiate Product class
+        Product report = new Product();
+
+        int totalSales = report.calculateTotalSales(salesData);
+        double avgSales = report.calculateAverageSales(salesData);
+        String mostPopular = report.getMostPopularProduct(productNames, salesData);
+
+        // Display formatted report matching the sample output
+        System.out.println("PRODUCT SALES REPORT - 2026");
+        System.out.println("--------------------------------------------------");
+        System.out.println("TOTAL PRODUCT SALES: " + totalSales);
+        System.out.println("AVERAGE PRODUCT SALES: " + (int) avgSales);
+        System.out.println("MOST POPULAR PRODUCT: " + mostPopular);
+
+        scanner.close();
+    }
+}
+
+
